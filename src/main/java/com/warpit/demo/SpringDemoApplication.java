@@ -12,8 +12,8 @@ import org.springframework.data.mongodb.repository.config.EnableMongoRepositorie
 
 import com.warpit.demo.scheduler.Scheduler;
 import com.warpit.demo.scheduler.SchedulerRepository;
-import com.warpit.demo.uc1.ActivityRepository;
 import com.warpit.demo.uc1.domain.Activity;
+import com.warpit.demo.uc1.repo.ActivityRepository;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -40,7 +40,7 @@ public class SpringDemoApplication implements CommandLineRunner {
 		log.info("Schedule intialization started ..");
 		
 		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-		String activityQRCodeURL = "http://localhost:8080/activities/checkIn?activityName=";
+		String activityQRCodeURL = "http://localhost:8080/checkIn/";
 				
 		Activity history = Activity.builder().activityBreak(10).activityDuration(50).activityName("History")
 				.activityStratDate(LocalDateTime.parse("2022-03-30 14:00:00", formatter))
