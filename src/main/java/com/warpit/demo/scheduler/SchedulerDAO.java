@@ -13,6 +13,7 @@ import org.springframework.data.mongodb.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import com.warpit.demo.uc1.domain.Activity;
+import com.warpit.demo.uc1.domain.ActivityDTO;
 
 @Repository
 public class SchedulerDAO {
@@ -25,15 +26,20 @@ public class SchedulerDAO {
 	}
 	
 	
-   public List<Activity> findActivitiesByQRCodeKey(String qrCodeKey){
-	   List<Activity> activityFound = new ArrayList<Activity>();
+   public List<ActivityDTO> findActivitiesByQRCodeKey(String qrCodeKey){
+	   List<ActivityDTO> activityFound = new ArrayList<ActivityDTO>();
 	   List<Scheduler> schedulerList = findAll();
 	   
 	   Predicate<Activity> qrCodeFound = activity -> activity.getActivityQRCodeKey().contentEquals(qrCodeKey);
 	   
 	   schedulerList.stream().forEach(schedule->{
 		   Activity activity =schedule.getScheduledActivities().stream().filter(qrCodeFound).findFirst().orElse(null)   ;
-		   activityFound.add(activity);   
+		   activityFound.add(ActivityDTO.builder().activityQRCodeURL(activity.getActivityQRCodeURL())
+				                               .activityStratDate(activity.getActivityStratDate())
+				                               .activityDuration(activity.getActivityDuration())
+				                               .activityBreak(activity.getActivityBreak())
+				                               .activityName(activity.getActivityName()).build()
+				   );   
 	   });
 	   
 	  	   

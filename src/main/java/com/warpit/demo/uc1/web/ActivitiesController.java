@@ -16,6 +16,7 @@ import com.warpit.demo.scheduler.Scheduler;
 import com.warpit.demo.scheduler.SchedulerDAO;
 import com.warpit.demo.scheduler.SchedulerRepository;
 import com.warpit.demo.uc1.domain.Activity;
+import com.warpit.demo.uc1.domain.ActivityDTO;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -36,9 +37,9 @@ public class ActivitiesController {
 	}
 
 	@GetMapping("/activities/{qrCodeKey}")
-	public List<Activity> getActivityForQRCodeKey(@PathVariable String qrCodeKey) {
+	public List<ActivityDTO> getActivityForQRCodeKey(@PathVariable String qrCodeKey) {
 
-		List<Activity> activityList = schedulerDAO.findActivitiesByQRCodeKey(qrCodeKey);
+		List<ActivityDTO> activityList = schedulerDAO.findActivitiesByQRCodeKey(qrCodeKey);
 		if(activityList.size()==0) throw new NoSuchElementException("QRCode not registered for any activity" + qrCodeKey);
 		
 	//	log.info(">>>><<<<<<<<<<<<"+schedulerDAO.findActivitiesByQRCodeKey(qrCodeKey));

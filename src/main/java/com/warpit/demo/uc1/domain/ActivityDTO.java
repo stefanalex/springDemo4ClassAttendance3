@@ -5,7 +5,6 @@ import java.time.LocalDateTime;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
@@ -22,17 +21,12 @@ import lombok.ToString;
 @Builder
 @ToString
 @Document
-public class Activity {
+public class ActivityDTO {
 
+private String activityName;
 	
-	private String activityName;
-	
-    @Min(0)
-    @Max(50)
     private Integer activityDuration;  
     
-    @Min(0)
-    @Max(10)
     private Integer activityBreak;
 
     @JsonFormat(pattern="yyyy-MM-dd HH:mm:ss")
@@ -40,8 +34,4 @@ public class Activity {
     
     private String activityQRCodeURL;
     
-    private String activityQRCodeKey;
-    
-  
-	   
 }
