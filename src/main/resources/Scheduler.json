@@ -8,7 +8,7 @@
         "activityStratDate": "2012-04-23 13:00:00",
         "activityDuration":50,
         "activityBreak":10,
-        "activityQRCodeKey":"QAZWSX",
+        "activityQRCodeKey":"QAZWSX",  
         "activityQRCodeURL":"http://localhost:8080/activities/chemistry/checkIn"
       },
        {

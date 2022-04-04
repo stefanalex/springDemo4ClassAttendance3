@@ -51,7 +51,8 @@ public class CheckInController {
 		LocalDateTime activityStartTime = activity.getActivityStratDate(); 
 		LocalDateTime studentStartTime = student.getCheckInTime();
 		
-		if(studentStartTime.isAfter(activityStartTime))
+	    //
+		if(studentStartTime.isBefore(activityStartTime))
 			             throw new NoSuchElementException("You cant check in after activity started");
 		
 		//other checks ...
