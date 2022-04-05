@@ -24,6 +24,9 @@ import lombok.ToString;
 @Document
 public class Activity {
 
+	@Id
+    private String id;
+	
 	
 	private String activityName;
 	
